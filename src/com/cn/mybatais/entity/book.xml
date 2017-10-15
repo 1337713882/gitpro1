@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper namespace属性是对当前mapper文件的唯一标识 -->
+<mapper namespace="com.mapper.book">
+	<!-- select 查询  id="当前命令的唯一标识" resultType="当前命令的返回数据的格式" -->
+	<select id="loadAll" resultType="book">
+		select * from book
+	</select>
+	
+	
+	<insert id="save" parameterType="book">
+		insert into book values(default,#{bookName},
+		   #{bookAuthor},#{bookPrice},#{bookInfo})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from book where bookId=#{bookId}
+	</delete>
+	
+	<update id="update" parameterType="book">
+		update book set bookName=#{bookName}, bookAuthor=#{bookAuthor},
+		bookPrice=#{bookPrice},bookInfo=#{bookInfo} where bookId=#{bookId}
+	</update>
+</mapper>
